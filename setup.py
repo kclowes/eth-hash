@@ -7,8 +7,8 @@ from setuptools import (
 
 extras_require = {
     'test': [
-        "pytest==5.4.1",
-        "pytest-xdist",
+        "pytest>=6.2.5,<7",
+        "pytest-xdist>=2.4.0,<3",
         "tox==3.14.6",
     ],
     'lint': [
@@ -20,7 +20,7 @@ extras_require = {
     'doc': [
         "Sphinx>=1.6.5,<2",
         "sphinx_rtd_theme>=0.1.9,<1",
-        "towncrier>=19.2.0, <20",
+        "towncrier>=21,<22",
     ],
     'dev': [
         "bumpversion>=0.5.3,<1",

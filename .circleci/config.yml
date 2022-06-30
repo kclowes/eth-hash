@@ -39,13 +39,13 @@ jobs:
   docs:
     <<: *common
     docker:
-      - image: circleci/python:3.6
+      - image: cimg/python:3.6
         environment:
           TOXENV: docs
   lint:
     <<: *common
     docker:
-      - image: circleci/python:3.6
+      - image: cimg/python:3.6
         environment:
           TOXENV: lint
   py35-core:
@@ -69,7 +69,7 @@ jobs:
   py36-core:
     <<: *common
     docker:
-      - image: circleci/python:3.6
+      - image: cimg/python:3.6
         environment:
           TOXENV: py36-core
   py36-backend-pysha3:
@@ -87,7 +87,7 @@ jobs:
   py37-core:
     <<: *common
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
         environment:
           TOXENV: py37-core
   py37-backend-pysha3:
