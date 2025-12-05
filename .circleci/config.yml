@@ -301,6 +301,12 @@ jobs:
       - image: cimg/python:3.13
         environment:
           TOXENV: py313-backend-pysha3
+  py314-backend-pysha3:
+    <<: *common
+    docker:
+      - image: cimg/python:3.14
+        environment:
+          TOXENV: py314-backend-pysha3
 
   py38-backend-pycryptodome:
     <<: *common
@@ -338,6 +344,12 @@ jobs:
       - image: cimg/python:3.13
         environment:
           TOXENV: py313-backend-pycryptodome
+  py314-backend-pycryptodome:
+    <<: *common
+    docker:
+      - image: cimg/python:3.14
+        environment:
+          TOXENV: py314-backend-pycryptodome
 
 define: &all_jobs
   - docs
