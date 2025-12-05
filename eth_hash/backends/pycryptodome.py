@@ -1,3 +1,6 @@
+from typing import (
+    cast,
+)
 from Crypto.Hash import (
     keccak,
 )
@@ -10,7 +13,9 @@ from eth_hash.abc import (
 
 class CryptodomePreimage(PreImageAPI):
     def __init__(self, prehash: bytes) -> None:
-        self._hash = keccak.new(data=prehash, digest_bits=256, update_after_digest=True)
+        self._hash = keccak.new(
+            data=prehash, digest_bits=256, update_after_digest=True
+        )
         # pycryptodome doesn't expose a `copy` mechanism for it's hash objects
         # so we keep a record of all of the parts for when/if we need to copy
         # them.
@@ -21,7 +26,7 @@ class CryptodomePreimage(PreImageAPI):
         self._parts.append(prehash)
 
     def digest(self) -> bytes:
-        return self._hash.digest()
+        return cast(bytes, self._hash.digest())
 
     def copy(self) -> "CryptodomePreimage":
         return CryptodomePreimage(b"".join(self._parts))
@@ -29,7 +34,7 @@ class CryptodomePreimage(PreImageAPI):
 
 class CryptodomeBackend(BackendAPI):
     def keccak256(self, prehash: bytearray | bytes) -> bytes:
-        hasher = keccak.new(data=prehash, digest_bits=256)
+        hasher = cast(bytes, keccak.new(data=prehash, digest_bits=256))
         return hasher.digest()
 
     def preimage(self, prehash: bytearray | bytes) -> PreImageAPI:
