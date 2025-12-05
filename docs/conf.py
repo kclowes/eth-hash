@@ -40,6 +40,9 @@ extensions = [
     "sphinx.ext.autosectionlabel",
 ]
 
+# Mock optional backend dependencies that may not be installed
+autodoc_mock_imports = ["sha3"]
+
 suppress_warnings = ["autosectionlabel.*"]
 
 # Add any paths that contain templates here, relative to this directory.
